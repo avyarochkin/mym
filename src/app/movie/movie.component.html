@@ -1,0 +1,21 @@
+<div class="container">
+    <section>
+        <table>
+            <tr><td>Genre</td><td>{{movie?.Genre}}</td></tr>
+            <tr><td>Released</td><td>{{movie?.Released}}</td></tr>
+            <tr><td>Rated</td><td>{{movie?.Rated}}</td></tr>
+            <tr><td>Writer</td><td>{{movie?.Writer}}</td></tr>
+            <tr><td>Actors</td><td>{{movie?.Actors}}</td></tr>
+        </table>
+
+        <h3>Plot</h3>
+        <p>{{movie?.Plot}}</p>
+
+        <div *ngIf="movie?.totalSeasons">
+            <h3><a (click)="movie.seasonsExpanded = !movie.seasonsExpanded">Seasons ({{movie?.totalSeasons}})</a></h3>
+            <div *ngIf="movie.seasonsExpanded">
+                <app-season *ngFor="let season of getMovieSeasons(); let i = index" [parentId]="movie.imdbID" [seasonSeq]="i+1"></app-season>
+            </div>
+        </div>
+    </section>
+</div>

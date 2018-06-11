@@ -1,0 +1,13 @@
+.container {
+    margin: 10px -10px;    
+    section {
+        border: 1px dashed #999;
+        border-radius: 10px;
+        background-color: #f7ffff;
+        padding: 10px;
+        td:first-child {
+            font-weight: 600;
+            padding-right: 5px;
+        }
+    }        
+}

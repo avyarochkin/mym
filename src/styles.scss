@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a {
+    cursor: pointer;
+}
+h1 {
+    font-size: 16pt;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-top: 1em;
+}
+h3 {
+    font-size: 12pt;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 1em 0 .5em;
+}
+table {
+    border-spacing: 0;
+    td {
+        padding: 0;
+    }
+}

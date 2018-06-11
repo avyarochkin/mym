@@ -1,0 +1,7 @@
+<h1 *ngIf="results">Search results ({{totalNumber}})</h1>
+<ul>
+  <li *ngFor="let result of results">
+    <a (click)="result.expanded = !result.expanded">{{result.Title}} ({{result.Year}}) {{result.Type}}</a>
+    <app-movie *ngIf="result.expanded" [id]="result.imdbID"></app-movie>
+  </li>
+</ul>
