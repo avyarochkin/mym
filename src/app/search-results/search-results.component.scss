@@ -3,15 +3,26 @@ ul {
     padding: 0;
     margin: 0;
     li {
-        position: relative;
         margin: 0 0 10px;
-        &:hover:before {
-            content: '+';
-            position: absolute;
-            left: -1em;
-        }
-        &.expanded:hover:before {
-            content: '-';
+        a {
+            position: relative;
+            &:hover:before {
+                content: '+';
+                position: absolute;
+                left: -1em;
+            }
+            &.expanded {
+                text-shadow: 0 0 1px #f96;
+                &:hover:before { content: '-' }
+            }
+            &:after {
+                display: inline-block;
+                margin-left: .2em;
+                width: 1em;
+                opacity: .2;
+            }
+            &.movie:after { content: url('/assets/images/movie.svg') }
+            &.series:after { content: url('/assets/images/series.svg') }
         }
     }
 }

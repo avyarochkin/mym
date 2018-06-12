@@ -1,3 +1,9 @@
-<p>
-  season works!
-</p>
+<section>
+    <h4>Season {{season?.Season}}</h4>
+    <ul>
+        <li *ngFor="let episode of season?.Episodes">
+            {{episode.Episode}}. <a (click)="episode.expanded = !episode.expanded">{{episode.Title}}</a>
+            <app-movie *ngIf="episode.expanded" [id]="episode.imdbID"></app-movie>
+        </li>
+    </ul>
+</section>

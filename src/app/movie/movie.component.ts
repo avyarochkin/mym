@@ -1,20 +1,32 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
 import { MdbMovie, MdbService, MdbSeason } from '../mdb.service'
+
+const NOT_AVAIL = 'N/A'
 
 @Component({
     selector: 'app-movie',
     templateUrl: './movie.component.html',
     styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent {
+export class MovieComponent implements OnChanges {
 
-    @Input() set id(id: string) {
-        if (id) this.mdb.getMovie(id).subscribe(movie => this.movie = movie)
-    }
+    @Input() id: string
+    @Input() season: string
+    @Input() episode: string
 
     movie: MdbMovie
   
     constructor(private mdb: MdbService) { }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (this.id) this.mdb.getMovie(this.id, this.season, this.episode)
+            .subscribe(movie => {
+                if (movie.Poster === NOT_AVAIL) {
+                    movie.Poster = '/assets/images/poster.jpg'
+                }
+                this.movie = movie
+            })
+    }
 
     getMovieSeasons(): MdbSeason[] {
         if (this.movie.totalSeasons) {

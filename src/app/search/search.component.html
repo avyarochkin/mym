@@ -1,4 +1,5 @@
-<form action="">
-  <input #searchInput type="text" name="searchInput" (keyup.enter)="submitSearch(searchInput.value)">
+<form action="" (submit)="submitSearch(searchInput.value)">
+  <input class="input" #searchInput type="text" name="searchInput" required autofocus autocomplete="off" (keyup.enter)="submitSearch(searchInput.value)">
+  <input class="submit" type="image" src="/assets/images/lupe.svg">
 </form>
 <app-search-results></app-search-results>

@@ -10,6 +10,7 @@ export class SeasonComponent implements OnInit {
 
     _parentId: string
     _seasonSeq: string
+
     @Input() set parentId(parentId: string) {
         this._parentId = parentId
         this.getSeason()
@@ -29,9 +30,10 @@ export class SeasonComponent implements OnInit {
 
     getSeason() {
         if (this._parentId && this._seasonSeq) {
-            this.mdb.getMovie(this._parentId, this._seasonSeq).subscribe(movie => {
-                this.season = movie as MdbSeason
-            })
+            this.mdb.getMovie(this._parentId, this._seasonSeq)
+                .subscribe(movie => {
+                    this.season = movie as MdbSeason
+                })
         }
     }
 }
