@@ -1,14 +1,20 @@
-<section *ngIf="results">
-    <h1>Search results ({{totalNumber}})</h1>
-    <ul>
-        <li *ngFor="let result of results">
-            <a (click)="result.expanded = !result.expanded" [class.expanded]="result.expanded" [class]="result.Type">
+<section *ngIf="results" class="mat-typography">
+    <h2>SEARCH RESULTS ({{totalNumber}})</h2>
+    <mat-nav-list>
+        <mat-list-item *ngFor="let result of results">
+            <a matLine
+                (click)="result.expanded = !result.expanded" 
+                [class.expanded]="result.expanded" 
+                [class]="result.Type">
                 {{result.Title}} ({{result.Year}})
             </a>
-            <app-movie *ngIf="result.expanded" [id]="result.imdbID"></app-movie>
-        </li>
-    </ul>    
+            <app-movie matLine
+                *ngIf="result.expanded" 
+                [id]="result.imdbID"></app-movie>
+        </mat-list-item>
+    </mat-nav-list>    
 </section>
-<section *ngIf="totalNumber==0">
+
+<section *ngIf="totalNumber==0" class="mat-typography">
     <h3>No results found</h3>
 </section>

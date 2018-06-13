@@ -1,5 +1,10 @@
-<form action="" (submit)="submitSearch(searchInput.value)">
-  <input class="input" #searchInput type="text" name="searchInput" required autofocus autocomplete="off" (keyup.enter)="submitSearch(searchInput.value)">
-  <input class="submit" type="image" src="/assets/images/lupe.svg">
+<form (submit)="submitSearch(searchInput.value)">
+    <mat-form-field appearance="fill">
+        <input matInput type="search" required autofocus autocomplete="off" 
+            #searchInput 
+            name="searchInput" 
+            placeholder="Enter search text"/>
+        <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+    </mat-form-field>
 </form>
 <app-search-results></app-search-results>

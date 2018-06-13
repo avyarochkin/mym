@@ -2,27 +2,4 @@
     margin: auto;
     width: 800px;
     box-shadow: 0 0 10px #ccc;
-    padding: 10px 20px;
-}
-nav {
-    border-bottom: 1px dashed #000;
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 10px 0;
-        li {
-            display: inline-block;
-            text-transform: uppercase;
-            a {
-                padding: 5px 10px;
-                outline: none;
-            }
-            a:hover {
-                background-color: #fed;
-            }
-        }
-    }
-}
-section {
-    padding: 20px 10px;
 }

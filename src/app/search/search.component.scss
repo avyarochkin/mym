@@ -1,18 +1,10 @@
-form {
-    position: relative;
-    .input {
-        font-size: 28pt;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px 60px 10px 20px;
-        border: 1px solid #666;
-    }
-    .submit {
-        position: absolute;
-        right: 0;
-        width: 2.2em;
-        margin: 1.4em;
-        opacity: .75;
-        cursor: pointer;
+@import '~@angular/material/theming';
+// Create a config with the default typography levels.
+$config: mat-typography-config();
+
+mat-form-field {
+    width: 100%;
+    input {
+        font-size: mat-font-size($config, display-1);
     }
 }
