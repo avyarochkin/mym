@@ -68,7 +68,7 @@ export class MdbService {
 
     search(title: string): Observable<MdbSearchResponse> {
 
-        let params = { apikey: API_KEY, s: title }
+        const params = { apikey: API_KEY, s: title }
 
         return this.http.get<MdbSearchResponse>(`${BASE_URL}`, { params }).pipe(
             tap(response => {
@@ -80,7 +80,9 @@ export class MdbService {
 
 
     getMovie(imdbID: string, season?: string, episode?: string): Observable<MdbMovie> {
-        let params = { apikey: API_KEY, i: imdbID, plot: 'full' }
+
+        const params = { apikey: API_KEY, i: imdbID, plot: 'full' }
+        
         if (season) params['Season'] = season
         if (episode) params['Episode'] = episode
 
