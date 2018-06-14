@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MdbService } from '../mdb.service'
+import { TMDBService } from '../tmdb.service'
 
 @Component({
     selector: 'app-search',
@@ -8,13 +8,13 @@ import { MdbService } from '../mdb.service'
 })
 export class SearchComponent implements OnInit {
 
-    constructor(private mdb: MdbService) { }
+    constructor(private mdb: TMDBService) { }
 
     ngOnInit() {
     }
 
     submitSearch(text: string) {
-      console.log(`Submitting search for ${text}`)
+        console.log(`Submitting search for ${text}`)
         this.mdb.search(text).subscribe()
     }
 }

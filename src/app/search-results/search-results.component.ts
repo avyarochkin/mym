@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MdbService, MdbTitle } from '../mdb.service'
+import { TMDBService, SearchRecord } from '../tmdb.service'
 
 @Component({
     selector: 'app-search-results',
@@ -8,14 +8,14 @@ import { MdbService, MdbTitle } from '../mdb.service'
 })
 export class SearchResultsComponent implements OnInit {
 
-    constructor(private mdb: MdbService) { }
+    constructor(private mdb: TMDBService) { }
 
-    get results(): MdbTitle[] {
-        return this.mdb.searchResults
+    get results(): SearchRecord[] {
+        return this.mdb.result ? this.mdb.result.results : undefined
     }
 
     get totalNumber(): number {
-        return this.mdb.totalNumber
+        return this.mdb.result ? this.mdb.result.total_results : undefined
     }
 
     ngOnInit() {

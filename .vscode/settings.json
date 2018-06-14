@@ -4,6 +4,7 @@
         "Metascore",
         "apikey",
         "imdb",
-        "theming"
+        "theming",
+        "tmdb"
     ]
 }
