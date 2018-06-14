@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { MdbMovie, MdbService, MdbSeason } from '../mdb.service'
+import { ActivatedRoute } from '@angular/router'
 
 const NOT_AVAIL = 'N/A'
 
@@ -8,7 +9,7 @@ const NOT_AVAIL = 'N/A'
     templateUrl: './movie.component.html',
     styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent implements OnChanges {
+export class MovieComponent implements OnInit, OnChanges {
 
     @Input() id: string
     @Input() season: string
@@ -16,9 +17,25 @@ export class MovieComponent implements OnChanges {
 
     movie: MdbMovie
   
-    constructor(private mdb: MdbService) { }
+    constructor(
+        private mdb: MdbService,
+        private route: ActivatedRoute
+    ) {}
+
+    ngOnInit(): void {
+        this.route.params.subscribe(params => {
+            this.id = params['id']
+            this.season = params['season']
+            this.episode = params['episode']
+            this.loadMovie()
+        })
+    }
 
     ngOnChanges(changes: SimpleChanges) {
+        this.loadMovie()
+    }
+
+    private loadMovie() {
         if (this.id) this.mdb.getMovie(this.id, this.season, this.episode)
             .subscribe(movie => {
                 if (movie.Poster === NOT_AVAIL) {

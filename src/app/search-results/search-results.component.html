@@ -3,14 +3,10 @@
     <mat-nav-list>
         <mat-list-item *ngFor="let result of results">
             <a matLine
-                (click)="result.expanded = !result.expanded" 
-                [class.expanded]="result.expanded" 
-                [class]="result.Type">
+                routerLink="/details/{{result.imdbID}}"
+                [class]="result.media">
                 {{result.Title}} ({{result.Year}})
             </a>
-            <app-movie matLine
-                *ngIf="result.expanded" 
-                [id]="result.imdbID"></app-movie>
         </mat-list-item>
     </mat-nav-list>    
 </section>

@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+<<<<<<< HEAD
         "apikey"
     ],
     "cSpell.enabledLanguageIds": [
@@ -20,5 +21,13 @@
         "typescript",
         "typescriptreact",
         "yml"
+=======
+        "Injectable",
+        "Metascore",
+        "apikey",
+        "imdb",
+        "theming",
+        "tmdb"
+>>>>>>> 4f8eb2e0ab1daab7b35933aa204e192efb18251e
     ]
 }
