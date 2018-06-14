@@ -1,5 +1,24 @@
 {
     "cSpell.words": [
         "apikey"
+    ],
+    "cSpell.enabledLanguageIds": [
+        "c",
+        "cpp",
+        "csharp",
+        "go",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "latex",
+        "markdown",
+        "php",
+        "plaintext",
+        "python",
+        "scss",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yml"
     ]
 }
