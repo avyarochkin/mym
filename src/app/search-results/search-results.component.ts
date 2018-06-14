@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MdbService, MdbTitle } from '../mdb.service';
+import { MdbService, MdbTitle } from '../mdb.service'
 
 @Component({
     selector: 'app-search-results',

@@ -7,7 +7,11 @@ const BASE_URL = 'http://www.omdbapi.com/'
 const API_KEY = '4023aa57'
 
 export interface MdbTitle {
-    Title: string
+    imdbID: string,
+    Title: string,
+    Type?: string,
+    Year?: string,
+    expanded?: boolean
 }
 
 export interface Rating {
@@ -15,13 +19,10 @@ export interface Rating {
     Value: String
 }
 
-export interface MdbMovie {
-    imdbID: string,
-    Title: string,
+export interface MdbMovie extends MdbTitle {
     Released: string,
     Season?: string,
     Episode?: string,
-    Year?: string,
     Rated?: string,
     Runtime?: string,
     Genre?: string,
@@ -37,9 +38,9 @@ export interface MdbMovie {
     Metascore?: string,
     imdbRating?: string,
     imdbVotes?: string,
-    Type?: string,
     totalSeasons?: number,
-    seasons?: MdbSeason[]
+    seasons?: MdbSeason[],
+    seasonsExpanded?: boolean
 }
 
 export interface MdbSeason {
