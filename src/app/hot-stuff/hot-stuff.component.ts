@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { MediaRecord, TMDBService } from '../tmdb.service'
 
 @Component({
     selector: 'app-hot-stuff',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core'
 })
 export class HotStuffComponent implements OnInit {
 
-    constructor() { }
+    constructor(private mdb: TMDBService) { }
+
+    movies: MediaRecord[]
 
     ngOnInit() {
+        this.mdb.getPopularMovies().subscribe(movies => this.movies = movies)
     }
 
 }

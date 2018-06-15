@@ -1,12 +1,13 @@
 <section *ngIf="results" class="mat-typography">
-    <h2>SEARCH RESULTS ({{totalNumber}})</h2>
+    <h3>SEARCH RESULTS ({{totalNumber}})</h3>
     <mat-nav-list>
         <mat-list-item *ngFor="let result of results">
+            <mat-icon matListIcon>{{iconForMediaType(result.media_type)}}</mat-icon>
             <a matLine
-                routerLink="/details/{{result.imdbID}}"
-                [class]="result.media">
-                {{result.Title}} ({{result.Year}})
+                routerLink="/details/{{result.id}}">
+                {{result.name}} {{result.release_date | date:'(yyyy)'}}
             </a>
+            <span matLine>{{result.original_title}}</span>
         </mat-list-item>
     </mat-nav-list>    
 </section>

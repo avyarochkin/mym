@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
-import { MdbMovie, MdbService, MdbSeason } from '../mdb.service'
 import { ActivatedRoute } from '@angular/router'
+import { MediaRecord, TMDBService } from '../tmdb.service'
 
 const NOT_AVAIL = 'N/A'
 
@@ -15,10 +15,10 @@ export class MovieComponent implements OnInit, OnChanges {
     @Input() season: string
     @Input() episode: string
 
-    movie: MdbMovie
+    movie: MediaRecord
   
     constructor(
-        private mdb: MdbService,
+        private mdb: TMDBService,
         private route: ActivatedRoute
     ) {}
 
@@ -36,6 +36,10 @@ export class MovieComponent implements OnInit, OnChanges {
     }
 
     private loadMovie() {
+        
+    }
+
+/*     private loadMovie() {
         if (this.id) this.mdb.getMovie(this.id, this.season, this.episode)
             .subscribe(movie => {
                 if (movie.Poster === NOT_AVAIL) {
@@ -44,8 +48,8 @@ export class MovieComponent implements OnInit, OnChanges {
                 this.movie = movie
             })
     }
-
-    getMovieSeasons(): MdbSeason[] {
+ */
+/*     getMovieSeasons(): MdbSeason[] {
         if (this.movie.totalSeasons) {
             if (!this.movie.seasons) {
                 this.movie.seasons = []
@@ -56,4 +60,5 @@ export class MovieComponent implements OnInit, OnChanges {
             return this.movie.seasons
         } else return []
     }
+ */
 }

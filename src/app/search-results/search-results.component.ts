@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { TMDBService, SearchRecord } from '../tmdb.service'
+import { TMDBService, MediaRecord } from '../tmdb.service'
 
 @Component({
     selector: 'app-search-results',
@@ -10,7 +10,7 @@ export class SearchResultsComponent implements OnInit {
 
     constructor(private mdb: TMDBService) { }
 
-    get results(): SearchRecord[] {
+    get results(): MediaRecord[] {
         return this.mdb.result ? this.mdb.result.results : undefined
     }
 
@@ -21,4 +21,8 @@ export class SearchResultsComponent implements OnInit {
     ngOnInit() {
     }
 
+    iconForMediaType(mediaType: string): string {
+        const icon = {'movie': 'videocam', 'tv': 'live_tv', 'person': 'person'}[mediaType]
+        return icon ? icon : 'error_outline'
+    }
 }

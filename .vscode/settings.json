@@ -1,7 +1,13 @@
 {
     "cSpell.words": [
-<<<<<<< HEAD
-        "apikey"
+        "Injectable",
+        "Metascore",
+        "apikey",
+        "deathday",
+        "imdb",
+        "theming",
+        "tmdb",
+        "videocam"
     ],
     "cSpell.enabledLanguageIds": [
         "c",
@@ -21,13 +27,5 @@
         "typescript",
         "typescriptreact",
         "yml"
-=======
-        "Injectable",
-        "Metascore",
-        "apikey",
-        "imdb",
-        "theming",
-        "tmdb"
->>>>>>> 4f8eb2e0ab1daab7b35933aa204e192efb18251e
     ]
 }
