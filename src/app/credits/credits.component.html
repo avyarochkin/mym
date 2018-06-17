@@ -1,0 +1,12 @@
+<h3>Crew</h3>
+<div class="view" *ngIf="credits">
+    <div class="back" (click)="scrollBack()" [class.enabled]="canScrollBack()"><mat-icon>chevron_left</mat-icon></div>
+    <div class="content" [style.marginLeft]="contentOffset+'px'">
+        <a *ngFor="let member of credits.cast" routerLink="/person/details/{{member.id}}">
+            <img src="{{imagePath(member.profile_path)}}" alt="credit">
+            <strong>{{member.name}}</strong>
+            <em>{{member.character}}</em>
+        </a>
+    </div>
+    <div class="forward" (click)="scrollForward()" [class.enabled]="canScrollForward()"><mat-icon>chevron_right</mat-icon></div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { MediaRecord, TMDBService } from '../tmdb.service'
+import { MovieRecord, TMDBService } from '../tmdb.service'
 
 const NOT_AVAIL = 'N/A'
 
@@ -11,11 +11,11 @@ const NOT_AVAIL = 'N/A'
 })
 export class MovieComponent implements OnInit, OnChanges {
 
-    @Input() id: string
+    @Input() id: number
     @Input() season: string
     @Input() episode: string
 
-    movie: MediaRecord
+    movie: MovieRecord
   
     constructor(
         private mdb: TMDBService,
@@ -36,29 +36,16 @@ export class MovieComponent implements OnInit, OnChanges {
     }
 
     private loadMovie() {
-        
+        this.mdb.getMovie(this.id).subscribe(movie => this.movie = movie)
     }
 
-/*     private loadMovie() {
-        if (this.id) this.mdb.getMovie(this.id, this.season, this.episode)
-            .subscribe(movie => {
-                if (movie.Poster === NOT_AVAIL) {
-                    movie.Poster = '/assets/images/poster.jpg'
-                }
-                this.movie = movie
-            })
+    imagePath(localPath: string): string {
+        return this.mdb.imagePath(localPath)
     }
- */
-/*     getMovieSeasons(): MdbSeason[] {
-        if (this.movie.totalSeasons) {
-            if (!this.movie.seasons) {
-                this.movie.seasons = []
-                for (let i = 1; i <= this.movie.totalSeasons; i++) {
-                    this.movie.seasons.push({ Season: i.toString(), Title: ''})
-                }
-            }
-            return this.movie.seasons
-        } else return []
+
+    timeToHM(time: number): string {
+        const hr = Math.trunc(time / 60)
+        const m = time - hr * 60
+        return (hr > 0 ? `${hr} hr ` : '') + (m > 0 ? `${m} min` : '')
     }
- */
 }

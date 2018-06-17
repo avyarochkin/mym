@@ -1,29 +1,17 @@
-.container1 {
-    margin: 10px -10px;
-    section {
-        border: 1px dashed #999;
-        border-radius: 10px;
-        background-color: rgba(195, 137, 108, 0.1);
-        padding: 10px;
-        overflow: hidden;
-        table {
-            font-size: 11pt;
-        }
-        td:first-child {
-            font-weight: 600;
-            padding-right: 10px;
-            vertical-align: top;
-        }
-        p {
-            font-size: 10pt;
-            margin: 0;
-        }
-        .poster {
-            float: right;
-            width: 150px;
-            margin: 10px;
-            opacity: .1;
-            &:hover { opacity: 1 }
-        }
-    }        
+section {
+    padding: .75em 2em;
+    p {
+        font-size: .8em;
+    }
 }
+.poster {
+    float: right;
+    margin: 0;
+    padding-left: 1em;
+    transition: transform .25s;
+    &:hover { transform: scale(1.05) }
+    img {
+        width: 200px;
+    }
+}
+

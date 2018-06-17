@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatListModule } from '@angular/material/list'
+import { MatChipsModule } from '@angular/material/chips'
 
 import { AppComponent } from './app.component'
 import { HotStuffComponent } from './hot-stuff/hot-stuff.component'
@@ -18,6 +19,9 @@ import { SearchComponent } from './search/search.component'
 import { SearchResultsComponent } from './search-results/search-results.component'
 import { MovieComponent } from './movie/movie.component'
 import { SeasonComponent } from './season/season.component'
+import { PersonComponent } from './person/person.component'
+import { SeriesComponent } from './series/series.component'
+import { CreditsComponent } from './credits/credits.component'
 
 @NgModule({
     declarations: [
@@ -26,7 +30,10 @@ import { SeasonComponent } from './season/season.component'
         SearchComponent,
         SearchResultsComponent,
         MovieComponent,
-        SeasonComponent
+        SeasonComponent,
+        PersonComponent,
+        SeriesComponent,
+        CreditsComponent
     ],
     imports: [
         BrowserModule,
@@ -39,7 +46,8 @@ import { SeasonComponent } from './season/season.component'
         MatInputModule,
         MatIconModule,
         MatButtonModule,
-        MatListModule
+        MatListModule,
+        MatChipsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

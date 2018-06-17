@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    clear: both;
+}
+div.view {
+    position: relative;
+    overflow: hidden;
+    > .back, > .forward {
+        position: absolute;
+        background-color: rgba(191, 191, 191, .75);
+        width: 40px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        cursor: default;
+        &.enabled {
+            color: white;
+            cursor: pointer;
+        }
+        mat-icon { transform: scale(1.5) }
+    }
+    > .forward {
+        top: 0;
+        right: 0;
+    }
+    > .content {
+        display: flex;
+        padding: 0 40px;
+        white-space: nowrap;
+        transition: margin .5s;
+        a {
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            color: black;
+            text-decoration: none;
+            padding: 0 5px;
+            img {
+                display: block;
+                width: 100px;
+                transition: transform .25s;
+                &:hover { transform: scale(1.05) }
+            }
+            strong, em {
+                display: block;
+                font-size: .75em;
+                white-space: normal;
+                margin-top: 0.25em;
+            }
+        }
+    }
+}

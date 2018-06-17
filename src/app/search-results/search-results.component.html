@@ -1,14 +1,34 @@
-<section *ngIf="results" class="mat-typography">
+<section *ngIf="totalNumber>0" class="mat-typography">
     <h3>SEARCH RESULTS ({{totalNumber}})</h3>
     <mat-nav-list>
-        <mat-list-item *ngFor="let result of results">
-            <mat-icon matListIcon>{{iconForMediaType(result.media_type)}}</mat-icon>
-            <a matLine
-                routerLink="/details/{{result.id}}">
-                {{result.name}} {{result.release_date | date:'(yyyy)'}}
-            </a>
-            <span matLine>{{result.original_title}}</span>
-        </mat-list-item>
+        <ng-container *ngFor="let result of results" [ngSwitch]="result.media_type">
+
+            <mat-list-item *ngSwitchCase="'movie'" routerLink="/movie/details/{{result.id}}">
+                <mat-icon matListIcon>videocam</mat-icon>
+                <a matLine>{{result.title}}</a>
+                <span matLine>
+                    {{result.release_date | date:'yyyy'}}:
+                    {{result.original_title !== result.title ? result.original_title : ''}}
+                </span>
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'tv'" routerLink="/series/details/{{result.id}}">
+                <mat-icon matListIcon>live_tv</mat-icon>
+                <a matLine>{{result.name}}</a>
+                <span matLine>
+                    {{result.first_air_date | date:'yyyy'}}:
+                    {{result.original_name !== result.name ? result.original_name : ''}}
+                </span>
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'person'" routerLink="/person/details/{{result.id}}">
+                <mat-icon matListIcon>person</mat-icon>
+                <a matLine>{{result.name}}</a>
+                <span matLine></span>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+        </ng-container>
     </mat-nav-list>    
 </section>
 
