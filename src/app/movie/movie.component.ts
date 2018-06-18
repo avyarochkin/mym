@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { MovieRecord, TMDBService } from '../tmdb.service'
+import { Utils } from '../utils'
 
 const NOT_AVAIL = 'N/A'
 
@@ -12,8 +13,6 @@ const NOT_AVAIL = 'N/A'
 export class MovieComponent implements OnInit, OnChanges {
 
     @Input() id: number
-    @Input() season: string
-    @Input() episode: string
 
     movie: MovieRecord
   
@@ -25,8 +24,6 @@ export class MovieComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.id = params['id']
-            this.season = params['season']
-            this.episode = params['episode']
             this.loadMovie()
         })
     }
@@ -38,14 +35,12 @@ export class MovieComponent implements OnInit, OnChanges {
     private loadMovie() {
         this.mdb.getMovie(this.id).subscribe(movie => this.movie = movie)
     }
-
+    
+    // TODO - move to a pipe
     imagePath(localPath: string): string {
-        return this.mdb.imagePath(localPath)
+        return Utils.imagePath(localPath)
     }
-
     timeToHM(time: number): string {
-        const hr = Math.trunc(time / 60)
-        const m = time - hr * 60
-        return (hr > 0 ? `${hr} hr ` : '') + (m > 0 ? `${m} min` : '')
+        return Utils.timeToHM(time)
     }
 }

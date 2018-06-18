@@ -7,8 +7,8 @@
                 <mat-icon matListIcon>videocam</mat-icon>
                 <a matLine>{{result.title}}</a>
                 <span matLine>
-                    {{result.release_date | date:'yyyy'}}:
-                    {{result.original_title !== result.title ? result.original_title : ''}}
+                    {{result.release_date | date:'yyyy'}}
+                    {{result.original_title !== result.title ? ': ' + result.original_title : ''}}
                 </span>
             </mat-list-item>
 
@@ -16,8 +16,8 @@
                 <mat-icon matListIcon>live_tv</mat-icon>
                 <a matLine>{{result.name}}</a>
                 <span matLine>
-                    {{result.first_air_date | date:'yyyy'}}:
-                    {{result.original_name !== result.name ? result.original_name : ''}}
+                    {{result.first_air_date | date:'yyyy'}}
+                    {{result.original_name !== result.name ? ': ' + result.original_name : ''}}
                 </span>
             </mat-list-item>
 

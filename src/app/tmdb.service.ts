@@ -90,34 +90,59 @@ export interface MovieRecord {
     title: string,
     video: boolean,
     vote_average: number,
-    vote_count: number
+    vote_count: number,
+    // series attributes
+    name: string,
+    created_by: CrewMember[],
+    episode_run_time: number[],
+    first_air_date?: string,
+    last_air_date?: string,
+    in_production: boolean,
+    languages: string[],
+    networks: Company[],
+    number_of_seasons: number,
+    number_of_episodes: number,
+    origin_country: string[],
+    original_name?: string,
+    seasons: Season[],
+    type: string
 }
 
 interface CastMember {
-    cast_id: number,
-    character: string,
-    credit_id: string,
-    gender?: number,
     id: number,
     name: string,
+    gender?: number,
+    character: string,
     order: number,
-    profile_path?: Url
+    profile_path?: Url,
+    cast_id: number,
+    credit_id?: string
 }
 
 interface CrewMember {
-    credit_id: string,
-    department: string,
-    gender?: number,
     id: number,
-    job: string,
     name: string,
-    profile_path?: Url
+    gender?: number,
+    profile_path?: Url,
+    department?: string,
+    job?: string,
+    credit_id?: string
 }
 
 export interface MovieCredits {
     id: number,
     cast: CastMember[],
     crew: CrewMember[]
+}
+
+export interface Season {
+    id: number,
+    name: string,
+    season_number: number,
+    air_date?: string,
+    episode_count: number,
+    overview?: string,
+    poster_path?: Url
 }
 
 export interface PersonRecord {
@@ -189,16 +214,6 @@ export class TMDBService {
         return this.http.get<PersonRecord>(`${BASE_URL}person/${id}?api_key=${API_KEY}`).pipe(
             tap(response => console.log(`[getPerson]:`, response))
         )
-    }
-
-    // MARK - Utils
-
-    imagePath(localPath: string): string {
-        if (localPath) {
-            return `http://image.tmdb.org/t/p/original/${localPath}`
-        } else {
-            return '/assets/images/poster.jpg'
-        }
     }
 
 }
