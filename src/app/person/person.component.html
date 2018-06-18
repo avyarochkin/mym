@@ -1,3 +1,8 @@
-<p>
-  person works!
-</p>
+<section *ngIf="person; else loading">
+    <a class="poster" href="//imdb.com/name/{{person.imdb_id}}" target="_new">
+        <img src="{{imagePath(person.profile_path)}}" alt="poster">
+    </a>
+    <h1>{{person.name}}</h1>
+    <p>Born: {{person.birthday | date}}</p>
+    <p>{{person.biography}}</p>
+</section>

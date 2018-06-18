@@ -30,7 +30,6 @@ export class SeriesComponent implements OnInit {
     loadSeries() {
         this.mdb.getSeries(this.id).subscribe(series => {
             this.movie = series
-            this.movie.title = series.name
         })
     }
 

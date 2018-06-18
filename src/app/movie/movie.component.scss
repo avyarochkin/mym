@@ -13,6 +13,13 @@ section {
     img {
         width: 200px;
         opacity: .05;
+        transition: opacity 1s;
+        &:hover { opacity: 1 }
     }
 }
-
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}

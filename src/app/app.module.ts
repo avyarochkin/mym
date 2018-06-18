@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatListModule } from '@angular/material/list'
 import { MatChipsModule } from '@angular/material/chips'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { AppComponent } from './app.component'
 import { HotStuffComponent } from './hot-stuff/hot-stuff.component'
@@ -22,6 +23,7 @@ import { SeasonComponent } from './season/season.component'
 import { PersonComponent } from './person/person.component'
 import { SeriesComponent } from './series/series.component'
 import { CreditsComponent } from './credits/credits.component'
+import { EpisodeComponent } from './episode/episode.component'
 
 @NgModule({
     declarations: [
@@ -33,7 +35,8 @@ import { CreditsComponent } from './credits/credits.component'
         SeasonComponent,
         PersonComponent,
         SeriesComponent,
-        CreditsComponent
+        CreditsComponent,
+        EpisodeComponent
     ],
     imports: [
         BrowserModule,
@@ -47,7 +50,8 @@ import { CreditsComponent } from './credits/credits.component'
         MatIconModule,
         MatButtonModule,
         MatListModule,
-        MatChipsModule
+        MatChipsModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     bootstrap: [AppComponent]

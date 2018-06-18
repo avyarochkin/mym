@@ -33,7 +33,11 @@ export class MovieComponent implements OnInit, OnChanges {
     }
 
     private loadMovie() {
-        this.mdb.getMovie(this.id).subscribe(movie => this.movie = movie)
+        this.mdb.getMovie(this.id).subscribe(movie => {
+            movie.name = movie.title
+            movie.original_name = movie.original_title
+            this.movie = movie
+        })
     }
     
     // TODO - move to a pipe

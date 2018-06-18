@@ -2,7 +2,7 @@
     <a class="poster" href="//imdb.com/title/{{movie.imdb_id}}" target="_new">
         <img src="{{imagePath(movie.poster_path)}}" alt="poster">
     </a>
-    <h1>{{movie.title}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
+    <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
     <mat-chip-list class="genres">
         <mat-chip *ngFor="let genre of movie.genres" routerLink="/genre/{{genre.id}}">{{genre.name}}</mat-chip>
         <mat-chip color="primary" selected="true">{{movie.vote_average}}</mat-chip>
@@ -10,17 +10,32 @@
     <p>Released: {{movie.release_date | date}}</p>
     <p>Runtime: {{timeToHM(movie.runtime)}}</p>
     <p>{{movie.overview}}</p>
+
     <app-credits [id]="movie.id"></app-credits>
+
     <div *ngIf="movie.seasons">
         <h3>Seasons</h3>
-        <mat-list>
-            <mat-list-item *ngFor="let season of movie.seasons">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let season of movie.seasons" routerLink="/season/details/{{movie.id}}/{{season.season_number}}">
                 <span matLine>{{season.name}}</span>
                 <mat-divider></mat-divider>
             </mat-list-item>
-        </mat-list>    
+        </mat-nav-list>    
     </div>
+
+    <div *ngIf="movie.episodes">
+        <h3>Episodes</h3>
+        <mat-nav-list>
+                <mat-list-item *ngFor="let episode of movie.episodes" routerLink="/episode/details/{{movie.id}}/{{episode.season_number}}/{{episode.episode_number}}">
+                    <span matLine>{{episode.episode_number}}. {{episode.name}}</span>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-nav-list>    
+        </div>
 </section>
+
 <ng-template #loading>
-    <h3>Loading...</h3>
+    <div class="loading-container">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
 </ng-template>

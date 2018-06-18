@@ -1,11 +1,9 @@
 <h3>POPULAR TODAY</h3>
 <mat-nav-list>
-    <mat-list-item *ngFor="let result of movies">
+    <mat-list-item *ngFor="let result of movies" routerLink="/movie/details/{{result.id}}">
         <mat-icon matListIcon>videocam</mat-icon>
-        <a matLine
-            routerLink="/details/{{result.id}}">
-            {{result.title}} {{result.release_date | date:'(yyyy)'}}
-        </a>
+        <a matLine>{{result.title}} {{result.release_date | date:'(yyyy)'}}</a>
         <span matLine>{{result.vote_average}}</span>
+        <mat-divider></mat-divider>
     </mat-list-item>
 </mat-nav-list>    

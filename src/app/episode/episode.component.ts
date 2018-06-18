@@ -1,17 +1,18 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core'
-import { TMDBService, MovieRecord } from '../tmdb.service'
+import { MovieRecord, TMDBService } from '../tmdb.service'
 import { ActivatedRoute } from '@angular/router'
 import { Utils } from '../utils'
 
 @Component({
-    selector: 'app-season',
-    templateUrl: '../movie/movie.component.html',
-    styleUrls: ['../movie/movie.component.scss']
+    selector: 'app-episode',
+    templateUrl: '../movie//movie.component.html',
+    styleUrls: ['../movie//movie.component.scss']
 })
-export class SeasonComponent implements OnInit, OnChanges {
+export class EpisodeComponent implements OnInit, OnChanges {
 
     @Input() parentId: number
     @Input() seasonSeq: number
+    @Input() episodeSeq: number
 
     movie: MovieRecord
 
@@ -20,22 +21,23 @@ export class SeasonComponent implements OnInit, OnChanges {
         private route: ActivatedRoute
     ) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.route.params.subscribe(params => {
             this.parentId = params['id']
             this.seasonSeq = params['season']
-            this.loadSeason()
+            this.episodeSeq = params['episode']
+            this.loadEpisode()
         })
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        this.loadSeason()
+        this.loadEpisode()
     }
 
-    loadSeason() {
-        if (this.parentId && this.seasonSeq) {
-            this.mdb.getSeason(this.parentId, this.seasonSeq).subscribe(season => {
-                this.movie = season
+    loadEpisode() {
+        if (this.parentId && this.seasonSeq && this.episodeSeq) {
+            this.mdb.getEpisode(this.parentId, this.seasonSeq, this.episodeSeq).subscribe(episode => {
+                this.movie = episode
             })
         }
     }

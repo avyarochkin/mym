@@ -105,7 +105,11 @@ export interface MovieRecord {
     origin_country: string[],
     original_name?: string,
     seasons: Season[],
-    type: string
+    type: string,
+    // season attributes
+    air_date?: string,
+    episodes: Episode[],
+    season_number: number
 }
 
 interface CastMember {
@@ -145,6 +149,21 @@ export interface Season {
     poster_path?: Url
 }
 
+export interface Episode {
+    id: number,
+    name: string,
+    episode_number: number,
+    season_number: number,
+    air_date?: string,
+    overview?: string,
+    crew: CrewMember[],
+    guest_stars: CastMember[],
+    production_code: string,
+    still_path: Url,
+    vote_average: number,
+    vote_count: number
+}
+
 export interface PersonRecord {
     adult: boolean,
     also_known_as: any[],
@@ -171,8 +190,10 @@ export class TMDBService {
     searchResult: MultiSearchResult
 
     search(query: string, page = 1): Observable<MultiSearchResult> {
+        // api_key=${API_KEY}&
+        const params = { api_key: API_KEY }
 
-        return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?api_key=${API_KEY}&page=${page}&query=${query}`).pipe(
+        return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?page=${page}&query=${query}`, { params }).pipe(
             tap(response => this.searchResult = response )
         )
     }
@@ -204,6 +225,18 @@ export class TMDBService {
     getSeries(id: number): Observable<MovieRecord> {
         return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}?api_key=${API_KEY}`).pipe(
             tap(response => console.log(`[getSeries]:`, response))
+        )
+    }
+
+    getSeason(id: number, season: number): Observable<MovieRecord> {
+        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}?api_key=${API_KEY}`).pipe(
+            tap(response => console.log(`[getSeason]:`, response))
+        )
+    }
+
+    getEpisode(id: number, season: number, episode: number): Observable<MovieRecord> {
+        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}?api_key=${API_KEY}`).pipe(
+            tap(response => console.log(`[getEpisode]:`, response))
         )
     }
 

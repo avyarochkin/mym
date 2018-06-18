@@ -1,9 +1,0 @@
-<section>
-    <h4>Season {{season?.Season}}</h4>
-    <ul>
-        <li *ngFor="let episode of season?.Episodes">
-            {{episode.Episode}}.
-            <a routerLink="/details/{{episode.imdbID}}">{{episode.Title}}</a>
-        </li>
-    </ul>
-</section>
