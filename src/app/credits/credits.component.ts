@@ -10,6 +10,7 @@ import { Utils } from '../utils'
 export class CreditsComponent implements OnChanges {
 
     @Input() id: number
+    @Input() mediaType: string
     
     credits: MovieCredits
 

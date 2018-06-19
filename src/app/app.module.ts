@@ -18,12 +18,12 @@ import { AppComponent } from './app.component'
 import { HotStuffComponent } from './hot-stuff/hot-stuff.component'
 import { SearchComponent } from './search/search.component'
 import { SearchResultsComponent } from './search-results/search-results.component'
-import { MovieComponent } from './movie/movie.component'
-import { SeasonComponent } from './season/season.component'
+import { MovieComponent } from './details/movie.component'
+import { SeasonComponent } from './details/season.component'
 import { PersonComponent } from './person/person.component'
-import { SeriesComponent } from './series/series.component'
+import { SeriesComponent } from './details/series.component'
 import { CreditsComponent } from './credits/credits.component'
-import { EpisodeComponent } from './episode/episode.component'
+import { EpisodeComponent } from './details/episode.component'
 
 @NgModule({
     declarations: [

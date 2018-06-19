@@ -1,11 +1,11 @@
 export module Utils {
 
-    export function imagePath(localPath: string): string {
-        if (localPath) {
-            return `http://image.tmdb.org/t/p/original/${localPath}`
-        } else {
-            return '/assets/images/poster.jpg'
-        }
+    export function imagePath(localPath: string, wrapper?: string): string {
+        const path = (localPath)
+            ? `http://image.tmdb.org/t/p/original/${localPath}`
+            : '/assets/images/poster.jpg'
+    
+        return wrapper ? `${wrapper}('${path}')` : path
     }
 
     export function timeToHM(time: number): string {

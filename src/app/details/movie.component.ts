@@ -7,8 +7,8 @@ const NOT_AVAIL = 'N/A'
 
 @Component({
     selector: 'app-movie',
-    templateUrl: './movie.component.html',
-    styleUrls: ['./movie.component.scss']
+    templateUrl: './details.component.html',
+    styleUrls: ['./details.component.scss']
 })
 export class MovieComponent implements OnInit, OnChanges {
 
@@ -41,8 +41,8 @@ export class MovieComponent implements OnInit, OnChanges {
     }
     
     // TODO - move to a pipe
-    imagePath(localPath: string): string {
-        return Utils.imagePath(localPath)
+    imagePath(localPath: string, wrapper: string): string {
+        return Utils.imagePath(localPath, wrapper)
     }
     timeToHM(time: number): string {
         return Utils.timeToHM(time)

@@ -11,3 +11,15 @@ table {
         padding: 0;
     }
 }
+.backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: .2;
+    z-index: -1;
+}
+section {
+    position: relative;
+    overflow: hidden;
+}

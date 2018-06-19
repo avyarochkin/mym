@@ -1,4 +1,5 @@
 <section *ngIf="movie; else loading">
+    <img class="backdrop" src="{{imagePath(movie.backdrop_path)}}">
     <a class="poster" href="//imdb.com/title/{{movie.imdb_id}}" target="_new">
         <img src="{{imagePath(movie.poster_path)}}" alt="poster">
     </a>
@@ -11,12 +12,12 @@
     <p>Runtime: {{timeToHM(movie.runtime)}}</p>
     <p>{{movie.overview}}</p>
 
-    <app-credits [id]="movie.id"></app-credits>
+    <app-credits [id]="movie.id" [mediaType]="mediaType"></app-credits>
 
     <div *ngIf="movie.seasons">
         <h3>Seasons</h3>
         <mat-nav-list>
-            <mat-list-item *ngFor="let season of movie.seasons" routerLink="/season/details/{{movie.id}}/{{season.season_number}}">
+            <mat-list-item *ngFor="let season of movie.seasons" routerLink="/details/season/{{movie.id}}/{{season.season_number}}">
                 <span matLine>{{season.name}}</span>
                 <mat-divider></mat-divider>
             </mat-list-item>
@@ -26,7 +27,7 @@
     <div *ngIf="movie.episodes">
         <h3>Episodes</h3>
         <mat-nav-list>
-                <mat-list-item *ngFor="let episode of movie.episodes" routerLink="/episode/details/{{movie.id}}/{{episode.season_number}}/{{episode.episode_number}}">
+                <mat-list-item *ngFor="let episode of movie.episodes" routerLink="/details/episode/{{movie.id}}/{{episode.season_number}}/{{episode.episode_number}}">
                     <span matLine>{{episode.episode_number}}. {{episode.name}}</span>
                     <mat-divider></mat-divider>
                 </mat-list-item>

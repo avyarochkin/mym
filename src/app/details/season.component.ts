@@ -5,8 +5,8 @@ import { Utils } from '../utils'
 
 @Component({
     selector: 'app-season',
-    templateUrl: '../movie/movie.component.html',
-    styleUrls: ['../movie/movie.component.scss']
+    templateUrl: './details.component.html',
+    styleUrls: ['./details.component.scss']
 })
 export class SeasonComponent implements OnInit, OnChanges {
 

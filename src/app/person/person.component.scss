@@ -11,15 +11,13 @@ section {
 }
 .poster {
     float: right;
+    width: 200px;
     margin: 0;
     padding-left: 1em;
     transition: transform .25s;
     &:hover { transform: scale(1.05) }
     img {
         width: 200px;
-        opacity: .05;
-        transition: opacity 1s;
-        &:hover { opacity: 1 }
     }
 }
 .loading-container {

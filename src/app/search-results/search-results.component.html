@@ -3,7 +3,7 @@
     <mat-nav-list>
         <ng-container *ngFor="let result of results" [ngSwitch]="result.media_type">
 
-            <mat-list-item *ngSwitchCase="'movie'" routerLink="/movie/details/{{result.id}}">
+            <mat-list-item *ngSwitchCase="'movie'" routerLink="/details/movie/{{result.id}}">
                 <mat-icon matListIcon>videocam</mat-icon>
                 <a matLine>{{result.title}}</a>
                 <span matLine>
@@ -12,7 +12,7 @@
                 </span>
             </mat-list-item>
 
-            <mat-list-item *ngSwitchCase="'tv'" routerLink="/series/details/{{result.id}}">
+            <mat-list-item *ngSwitchCase="'tv'" routerLink="/details/series/{{result.id}}">
                 <mat-icon matListIcon>live_tv</mat-icon>
                 <a matLine>{{result.name}}</a>
                 <span matLine>
@@ -21,7 +21,7 @@
                 </span>
             </mat-list-item>
 
-            <mat-list-item *ngSwitchCase="'person'" routerLink="/person/details/{{result.id}}">
+            <mat-list-item *ngSwitchCase="'person'" routerLink="/details/person/{{result.id}}">
                 <mat-icon matListIcon>person</mat-icon>
                 <a matLine>{{result.name}}</a>
                 <span matLine></span>

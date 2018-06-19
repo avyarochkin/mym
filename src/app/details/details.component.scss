@@ -12,9 +12,7 @@ section {
     &:hover { transform: scale(1.05) }
     img {
         width: 200px;
-        opacity: .05;
-        transition: opacity 1s;
-        &:hover { opacity: 1 }
+        opacity: 1;
     }
 }
 .loading-container {
