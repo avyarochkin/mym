@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core'
-import { TMDBService, MovieRecord } from '../tmdb.service'
+import { TMDBService, MovieRecord, MEDIA_TYPE } from '../tmdb.service'
 import { ActivatedRoute } from '@angular/router'
 import { Utils } from '../utils'
 
@@ -12,6 +12,7 @@ export class SeasonComponent implements OnInit, OnChanges {
 
     @Input() parentId: number
     @Input() seasonSeq: number
+    readonly mediaType = MEDIA_TYPE.SEASON
 
     movie: MovieRecord
 

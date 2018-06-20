@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
-import { TMDBService, MovieCredits } from '../tmdb.service'
+import { TMDBService, MovieCredits, MEDIA_TYPE } from '../tmdb.service'
 import { Utils } from '../utils'
+import { Observable } from 'rxjs'
 
 @Component({
     selector: 'app-credits',
@@ -11,6 +12,8 @@ export class CreditsComponent implements OnChanges {
 
     @Input() id: number
     @Input() mediaType: string
+    @Input() season: number
+    @Input() episode: number
     
     credits: MovieCredits
 
@@ -26,7 +29,19 @@ export class CreditsComponent implements OnChanges {
     }
 
     loadCredits() {
-        this.mdb.getMovieCredits(this.id).subscribe(credits => this.credits = credits)
+        const getCredits = (): Observable<MovieCredits> => {
+            switch (this.mediaType) {
+                case MEDIA_TYPE.MOVIE:
+                    return this.mdb.getMovieCredits(this.id)
+                case MEDIA_TYPE.SERIES:
+                    return this.mdb.getSeriesCredits(this.id)
+                case MEDIA_TYPE.SEASON:
+                    return this.mdb.getSeasonCredits(this.id, this.season)
+                case MEDIA_TYPE.EPISODE:
+                    return this.mdb.getEpisodeCredits(this.id, this.season, this.episode)
+            }
+        }
+        getCredits().subscribe(credits => this.credits = credits)
     }
 
     // MARK - Scrolling

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { MovieRecord, TMDBService } from '../tmdb.service'
+import { MovieRecord, TMDBService, MEDIA_TYPE } from '../tmdb.service'
 import { Utils } from '../utils'
 
 const NOT_AVAIL = 'N/A'
@@ -13,6 +13,7 @@ const NOT_AVAIL = 'N/A'
 export class MovieComponent implements OnInit, OnChanges {
 
     @Input() id: number
+    readonly mediaType = MEDIA_TYPE.MOVIE
 
     movie: MovieRecord
   

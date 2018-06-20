@@ -8,10 +8,18 @@ const API_KEY = '66d4305f8d77fcd22bd67d5ed8ad39af'
 
 export type Url = string
 
+export enum MEDIA_TYPE {
+    MOVIE = 'movie',
+    SERIES = 'tv',
+    SEASON = 'season',
+    EPISODE = 'episode',
+    PERSON = 'person'
+}
+
 export interface MediaRecord {
     // common attributes
     id: number,
-    media_type: 'movie'|'tv'|'person',
+    media_type: MEDIA_TYPE,
     name: string,
     overview?: string,
     popularity?: number,
@@ -194,7 +202,10 @@ export class TMDBService {
         const params = { api_key: API_KEY }
 
         return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?page=${page}&query=${query}`, { params }).pipe(
-            tap(response => this.searchResult = response )
+            tap(response => {
+                this.searchResult = response
+                console.log(`[search]:`, response)
+            })
         )
     }
 
@@ -228,11 +239,27 @@ export class TMDBService {
         )
     }
 
+    getSeriesCredits(id: number): Observable<MovieCredits> {
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/credits?api_key=${API_KEY}`).pipe(
+            tap(response => console.log(`[getSeriesCredits]:`, response))
+        )
+    }
+
+    // MARK - Season
+
     getSeason(id: number, season: number): Observable<MovieRecord> {
         return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}?api_key=${API_KEY}`).pipe(
             tap(response => console.log(`[getSeason]:`, response))
         )
     }
+
+    getSeasonCredits(id: number, season: number): Observable<MovieCredits> {
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/credits?api_key=${API_KEY}`).pipe(
+            tap(response => console.log(`[getSeasonCredits]:`, response))
+        )
+    }
+
+    // MARK - Episode
 
     getEpisode(id: number, season: number, episode: number): Observable<MovieRecord> {
         return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}?api_key=${API_KEY}`).pipe(
@@ -240,6 +267,11 @@ export class TMDBService {
         )
     }
 
+    getEpisodeCredits(id: number, season: number, episode: number): Observable<MovieCredits> {
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}/credits?api_key=${API_KEY}`).pipe(
+            tap(response => console.log(`[getEpisodeCredits]:`, response))
+        )
+    }
 
     // MARK - Person
 

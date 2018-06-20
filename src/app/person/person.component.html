@@ -6,3 +6,9 @@
     <p>Born: {{person.birthday | date}}</p>
     <p>{{person.biography}}</p>
 </section>
+
+<ng-template #loading>
+    <div class="loading-container">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+</ng-template>

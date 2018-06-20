@@ -12,7 +12,7 @@
     <p>Runtime: {{timeToHM(movie.runtime)}}</p>
     <p>{{movie.overview}}</p>
 
-    <app-credits [id]="movie.id" [mediaType]="mediaType"></app-credits>
+    <app-credits [id]="movie.id" [mediaType]="mediaType" [season]="seasonSeq" [episode]="episodeSeq"></app-credits>
 
     <div *ngIf="movie.seasons">
         <h3>Seasons</h3>
