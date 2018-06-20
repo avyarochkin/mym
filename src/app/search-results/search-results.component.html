@@ -1,4 +1,4 @@
-<section *ngIf="totalNumber>0" class="mat-typography">
+<section *ngIf="results; else empty" class="mat-typography">
     <h3>SEARCH RESULTS ({{totalNumber}})</h3>
     <mat-nav-list>
         <ng-container *ngFor="let result of results" [ngSwitch]="result.media_type">
@@ -32,6 +32,6 @@
     </mat-nav-list>    
 </section>
 
-<section *ngIf="totalNumber==0" class="mat-typography">
-    <h3>No results found</h3>
-</section>
+<ng-template #empty>
+    <img class="empty" src="/assets/images/empty-search.png">
+</ng-template>

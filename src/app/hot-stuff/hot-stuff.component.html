@@ -1,7 +1,8 @@
 <section class="mat-typography">
     <h3>POPULAR TODAY</h3>
     <mat-nav-list>
-        <mat-list-item *ngFor="let result of movies" routerLink="/movie/details/{{result.id}}">
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let result of movies" routerLink="/details/movie/{{result.id}}">
             <mat-icon matListIcon>videocam</mat-icon>
             <a matLine>{{result.title}}</a>
             <mat-chip-list>

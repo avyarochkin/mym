@@ -14,8 +14,8 @@ const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'details/movie/:id', component: MovieComponent },
     { path: 'details/series/:id', component: SeriesComponent },
-    { path: 'season/details/:id/:season', component: SeasonComponent },
-    { path: 'episode/details/:id/:season/:episode', component: EpisodeComponent },
+    { path: 'details/season/:id/:season', component: SeasonComponent },
+    { path: 'details/episode/:id/:season/:episode', component: EpisodeComponent },
     { path: 'details/person/:id', component: PersonComponent },
     { path: '', redirectTo: '/search', pathMatch: 'full' }
 ]

@@ -8,3 +8,8 @@ mat-form-field {
         font-size: mat-font-size($config, display-1);
     }
 }
+:host {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

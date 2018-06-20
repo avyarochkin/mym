@@ -1,5 +1,12 @@
+@import "../../declarations.scss";
+
 section {
-    padding: .75em 2em;
+    padding: .75em 1em;
+    h1 {
+        color: white;
+        font-weight: 500;
+        text-shadow: 1px -1px 3px black;
+    }
     p {
         font-size: .8em;
     }
@@ -14,6 +21,7 @@ section {
         width: 200px;
         opacity: 1;
     }
+    @media screen and (max-width: $tablet) { display: none }
 }
 .loading-container {
     display: flex;

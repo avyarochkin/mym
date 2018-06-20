@@ -1,9 +1,8 @@
 <form (submit)="submitSearch(searchInput.value)">
     <mat-form-field appearance="fill">
-        <input matInput type="search" required autofocus autocomplete="off" 
+        <input matInput type="text" required autofocus autocomplete="off" 
             #searchInput 
-            name="searchInput" 
-            placeholder="Enter search text"/>
+            name="searchInput"/>
         <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
     </mat-form-field>
 </form>

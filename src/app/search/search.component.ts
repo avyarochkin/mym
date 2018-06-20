@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { TMDBService } from '../tmdb.service'
 
 @Component({
@@ -8,6 +8,8 @@ import { TMDBService } from '../tmdb.service'
 })
 export class SearchComponent implements OnInit {
 
+    @ViewChild('searchInput') searchInput: ElementRef
+
     constructor(private mdb: TMDBService) { }
 
     ngOnInit() {
@@ -15,6 +17,7 @@ export class SearchComponent implements OnInit {
 
     submitSearch(text: string) {
         console.log(`Submitting search for ${text}`)
+        this.searchInput.nativeElement.blur()
         this.mdb.search(text).subscribe()
     }
 }
