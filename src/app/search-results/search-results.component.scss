@@ -11,6 +11,14 @@
     opacity: .5;
     align-self: center;
 }
-section {
-    padding: .75em;
+.mat-nav-list {
+    .mat-list-item {
+        overflow: hidden;
+        img {
+            height: 150%;
+            max-width: 88px;
+            margin: 0 -16px;
+            transform: rotate(10deg);
+        }
+    }
 }

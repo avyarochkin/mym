@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { TMDBService, MediaRecord } from '../tmdb.service'
+import { Utils } from '../utils'
 
 @Component({
     selector: 'app-search-results',
@@ -21,4 +22,11 @@ export class SearchResultsComponent implements OnInit {
     ngOnInit() {
     }
 
+    // TODO - move to a pipe
+    imagePath(localPath: string, wrapper: string): string {
+        return Utils.imagePath(localPath, wrapper)
+    }
+    timeToHM(time: number): string {
+        return Utils.timeToHM(time)
+    }
 }

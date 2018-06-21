@@ -1,6 +1,7 @@
 <section *ngIf="results; else empty" class="mat-typography">
-    <h3>SEARCH RESULTS ({{totalNumber}})</h3>
+    <h4>SEARCH RESULTS ({{totalNumber}})</h4>
     <mat-nav-list>
+        <mat-divider></mat-divider>
         <ng-container *ngFor="let result of results" [ngSwitch]="result.media_type">
 
             <mat-list-item *ngSwitchCase="'movie'" routerLink="/details/movie/{{result.id}}">
@@ -10,6 +11,8 @@
                     {{result.release_date | date:'yyyy'}}
                     {{result.original_title !== result.title ? ': ' + result.original_title : ''}}
                 </span>
+                <span matLine>{{result.vote_average}}</span>
+                <img src="{{imagePath(result.poster_path)}}" alt="poster">
             </mat-list-item>
 
             <mat-list-item *ngSwitchCase="'tv'" routerLink="/details/series/{{result.id}}">
@@ -19,12 +22,16 @@
                     {{result.first_air_date | date:'yyyy'}}
                     {{result.original_name !== result.name ? ': ' + result.original_name : ''}}
                 </span>
+                <span matLine>{{result.vote_average}}</span>
+                <img src="{{imagePath(result.poster_path)}}" alt="poster">
             </mat-list-item>
 
             <mat-list-item *ngSwitchCase="'person'" routerLink="/details/person/{{result.id}}">
                 <mat-icon matListIcon>person</mat-icon>
                 <a matLine>{{result.name}}</a>
                 <span matLine></span>
+                <span matLine></span>
+                <img src="{{imagePath(result.profile_path)}}" alt="poster">
             </mat-list-item>
 
             <mat-divider></mat-divider>
