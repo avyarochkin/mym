@@ -10,21 +10,18 @@ body {
     width: 100%;
     min-height: 100%;
 }
-table {
-    border-spacing: 0;
-    td {
-        padding: 0;
-    }
+.mat-chip.mat-standard-chip {
+    font-size: .7em;
+    padding: 5px 6px;
 }
-.backdrop {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    // opacity: .2;
-    z-index: -1;
+h4 {
+    padding: .5em 5%;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #67c;
+    margin: 0;
 }
-section {
-    position: relative;
-    overflow: hidden;
+form + h4 {
+    margin-top: -1.3em;
 }

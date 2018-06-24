@@ -1,21 +1,23 @@
 <section *ngIf="movie; else loading">
-    <img class="backdrop" src="{{imagePath(movie.backdrop_path)}}">
-    <a class="poster" href="//imdb.com/title/{{movie.imdb_id}}" target="_new">
-        <img src="{{imagePath(movie.poster_path)}}" alt="poster">
-    </a>
-    <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
-    <mat-chip-list class="genres">
-        <mat-chip *ngFor="let genre of movie.genres" routerLink="/genre/{{genre.id}}">{{genre.name}}</mat-chip>
-        <mat-chip color="primary" selected="true">{{movie.vote_average}}</mat-chip>
-    </mat-chip-list>
+    <div class="header">
+        <img class="backdrop" src="{{imagePath(movie.backdrop_path)}}">
+        <div class="overlay">
+            <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
+            <mat-chip-list class="genres">
+                <mat-chip *ngFor="let genre of movie.genres" routerLink="/genre/{{genre.id}}">{{genre.name}}</mat-chip>
+                <mat-chip color="primary" selected="true">{{movie.vote_average}}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    
+    <p>{{movie.overview}}</p>
     <p>Released: {{movie.release_date | date}}</p>
     <p>Runtime: {{timeToHM(movie.runtime)}}</p>
-    <p>{{movie.overview}}</p>
 
     <app-credits [id]="movie.id" [mediaType]="mediaType" [season]="seasonSeq" [episode]="episodeSeq"></app-credits>
 
     <div *ngIf="movie.seasons">
-        <h3>Seasons</h3>
+        <h4>Seasons</h4>
         <mat-nav-list>
             <mat-list-item *ngFor="let season of movie.seasons" routerLink="/details/season/{{movie.id}}/{{season.season_number}}">
                 <span matLine>{{season.name}}</span>
@@ -27,12 +29,12 @@
     <div *ngIf="movie.episodes">
         <h3>Episodes</h3>
         <mat-nav-list>
-                <mat-list-item *ngFor="let episode of movie.episodes" routerLink="/details/episode/{{movie.id}}/{{episode.season_number}}/{{episode.episode_number}}">
-                    <span matLine>{{episode.episode_number}}. {{episode.name}}</span>
-                    <mat-divider></mat-divider>
-                </mat-list-item>
-            </mat-nav-list>    
-        </div>
+            <mat-list-item *ngFor="let episode of movie.episodes" routerLink="/details/episode/{{movie.id}}/{{episode.season_number}}/{{episode.episode_number}}">
+                <span matLine>{{episode.episode_number}}. {{episode.name}}</span>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-nav-list>    
+    </div>
 </section>
 
 <ng-template #loading>

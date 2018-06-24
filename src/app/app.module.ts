@@ -17,7 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { AppComponent } from './app.component'
 import { HotStuffComponent } from './hot-stuff/hot-stuff.component'
 import { SearchComponent } from './search/search.component'
-import { SearchResultsComponent } from './search-results/search-results.component'
+import { RecordsComponent } from './records/records.component'
 import { MovieComponent } from './details/movie.component'
 import { SeasonComponent } from './details/season.component'
 import { PersonComponent } from './person/person.component'
@@ -30,7 +30,7 @@ import { EpisodeComponent } from './details/episode.component'
         AppComponent,
         HotStuffComponent,
         SearchComponent,
-        SearchResultsComponent,
+        RecordsComponent,
         MovieComponent,
         SeasonComponent,
         PersonComponent,

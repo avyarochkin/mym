@@ -19,7 +19,7 @@ export class CreditsComponent implements OnChanges {
 
     contentOffset = 0
     
-    private readonly scrollOffset = 110
+    private readonly scrollOffset = 125 * 3
 
 
     constructor(private mdb: TMDBService) { }

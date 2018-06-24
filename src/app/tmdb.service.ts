@@ -44,7 +44,7 @@ export interface MediaRecord {
     known_for?: MediaRecord[]
 }
 
-interface MultiSearchResult {
+export interface MultiSearchResult {
     page: number,
     results: MediaRecord[],
     total_results: number,
@@ -195,11 +195,13 @@ export class TMDBService {
 
     constructor(private http: HttpClient) { }
 
+    searchText: string
     searchResult: MultiSearchResult
 
     search(query: string, page = 1): Observable<MultiSearchResult> {
         // api_key=${API_KEY}&
         const params = { api_key: API_KEY }
+        this.searchText = query
 
         return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?page=${page}&query=${query}`, { params }).pipe(
             tap(response => {
@@ -223,10 +225,9 @@ export class TMDBService {
         )
     }
 
-    getPopularMovies(): Observable<MediaRecord[]> {
+    getPopularMovies(): Observable<MultiSearchResult> {
         return this.http.get<MultiSearchResult>(`${BASE_URL}movie/popular?api_key=${API_KEY}&page=1`).pipe(
-            tap(response => console.log(`[getPopularMovies]:`, response)),
-            map(response => response.results)
+            tap(response => console.log(`[getPopularMovies]:`, response))
         )
     }
 

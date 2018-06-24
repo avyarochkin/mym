@@ -1,9 +1,11 @@
 <form (submit)="submitSearch(searchInput.value)">
     <mat-form-field appearance="fill">
         <input matInput type="text" required autofocus autocomplete="off" 
-            #searchInput 
+            #searchInput
+            [(ngModel)]="searchText"
             name="searchInput"/>
         <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
     </mat-form-field>
 </form>
-<app-search-results></app-search-results>
+<h4 *ngIf="response">FOUND {{response.total_results | number}} RECORDS</h4>
+<app-records [records]="response?.results"></app-records>

@@ -1,23 +1,29 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
-import { TMDBService } from '../tmdb.service'
+import { Component, ViewChild, ElementRef } from '@angular/core'
+import { TMDBService, MultiSearchResult } from '../tmdb.service'
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
     @ViewChild('searchInput') searchInput: ElementRef
 
-    constructor(private mdb: TMDBService) { }
-
-    ngOnInit() {
+    get searchText(): string {
+        return this.mdb.searchText
     }
+    set searchText(value: string) {
+        this.mdb.searchText = value
+    }
+
+    response: MultiSearchResult
+
+    constructor(private mdb: TMDBService) { }
 
     submitSearch(text: string) {
         console.log(`Submitting search for ${text}`)
         this.searchInput.nativeElement.blur()
-        this.mdb.search(text).subscribe()
+        this.mdb.search(text).subscribe(response => this.response = response)
     }
 }

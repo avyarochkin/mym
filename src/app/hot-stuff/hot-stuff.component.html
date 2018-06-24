@@ -1,15 +1,4 @@
-<section class="mat-typography">
-    <h3>POPULAR TODAY</h3>
-    <mat-nav-list>
-        <mat-divider></mat-divider>
-        <mat-list-item *ngFor="let result of movies" routerLink="/details/movie/{{result.id}}">
-            <mat-icon matListIcon>videocam</mat-icon>
-            <a matLine>{{result.title}}</a>
-            <mat-chip-list>
-                <mat-chip selected>{{result.vote_average}}</mat-chip>
-            </mat-chip-list>
-            <span matLine>{{result.release_date | date:'(yyyy)'}}</span>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-    </mat-nav-list>    
+<section>
+    <h4>POPULAR TODAY</h4>
+    <app-records [records]="response?.results"></app-records>
 </section>
