@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
 import { TMDBService, MovieCredits, MEDIA_TYPE } from '../tmdb.service'
-import { Utils } from '../utils'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -60,11 +59,6 @@ export class CreditsComponent implements OnChanges {
 
     scrollForward() {
         if (this.canScrollForward()) this.contentOffset -= this.scrollOffset
-    }
-
-    // TODO - move to pipe
-    imagePath(localPath: string): string {
-        return Utils.imagePath(localPath)
     }
 
 }

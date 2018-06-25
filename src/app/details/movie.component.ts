@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { MovieRecord, TMDBService, MEDIA_TYPE } from '../tmdb.service'
-import { Utils } from '../utils'
 
 const NOT_AVAIL = 'N/A'
 
@@ -39,13 +38,5 @@ export class MovieComponent implements OnInit, OnChanges {
             movie.original_name = movie.original_title
             this.movie = movie
         })
-    }
-    
-    // TODO - move to a pipe
-    imagePath(localPath: string, wrapper: string): string {
-        return Utils.imagePath(localPath, wrapper)
-    }
-    timeToHM(time: number): string {
-        return Utils.timeToHM(time)
     }
 }

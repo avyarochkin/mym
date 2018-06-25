@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { TMDBService, MovieRecord, MEDIA_TYPE } from '../tmdb.service'
 import { ActivatedRoute } from '@angular/router'
-import { Utils } from '../utils'
 
 @Component({
     selector: 'app-series',
@@ -33,13 +32,4 @@ export class SeriesComponent implements OnInit {
             this.movie = series
         })
     }
-
-    // TODO - move to a pipe
-    imagePath(localPath: string): string {
-        return Utils.imagePath(localPath)
-    }
-    timeToHM(time: number): string {
-        return Utils.timeToHM(time)
-    }
-    
 }

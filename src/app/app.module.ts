@@ -25,6 +25,8 @@ import { PersonComponent } from './person/person.component'
 import { SeriesComponent } from './details/series.component'
 import { CreditsComponent } from './credits/credits.component'
 import { EpisodeComponent } from './details/episode.component'
+import { ImagePathPipe } from './image-path.pipe'
+import { RuntimePipe } from './runtime.pipe'
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { EpisodeComponent } from './details/episode.component'
         PersonComponent,
         SeriesComponent,
         CreditsComponent,
-        EpisodeComponent
+        EpisodeComponent,
+        ImagePathPipe,
+        RuntimePipe
     ],
     imports: [
         BrowserModule,

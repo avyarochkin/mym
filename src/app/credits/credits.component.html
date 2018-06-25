@@ -3,7 +3,7 @@
     <div class="back" (click)="scrollBack()" [class.enabled]="canScrollBack()"><mat-icon>chevron_left</mat-icon></div>
     <div class="content" [style.marginLeft]="contentOffset+'px'">
         <a *ngFor="let member of credits.cast" routerLink="/details/person/{{member.id}}">
-            <img src="{{imagePath(member.profile_path)}}" alt="credit">
+            <img src="{{member.profile_path | imagePath}}" alt="credit">
             <strong>{{member.name}}</strong>
             <em>{{member.character}}</em>
         </a>

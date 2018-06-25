@@ -12,14 +12,14 @@
                     {{record.original_name !== record.name ? ': ' + record.original_name : ''}}
                 </span>
                 <span matLine></span>
-                <img src="{{imagePath(record.poster_path)}}" alt="poster">
+                <img src="{{record.poster_path | imagePath}}" alt="poster">
             </mat-list-item>
             
             <mat-list-item *ngSwitchCase="'person'" routerLink="/details/person/{{record.id}}">
                 <mat-icon matListIcon>person</mat-icon>
                 <a matLine>{{record.name}}</a>
                 <span matLine><dfn *ngFor="let movie of record.known_for; let i = index"><i *ngIf="i">, </i>{{movie.title}}</dfn></span>
-                <img src="{{imagePath(record.profile_path)}}" alt="profile">
+                <img src="{{record.profile_path | imagePath}}" alt="profile">
             </mat-list-item>
             
             <mat-list-item *ngSwitchDefault routerLink="/details/movie/{{record.id}}">
@@ -30,7 +30,7 @@
                     {{record.release_date | date:'yyyy'}}
                     {{record.original_title !== record.title ? ': ' + record.original_title : ''}}
                 </span>
-                <img src="{{imagePath(record.poster_path)}}" alt="poster">
+                <img src="{{record.poster_path | imagePath}}" alt="poster">
             </mat-list-item>
 
             <mat-divider></mat-divider>

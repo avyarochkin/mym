@@ -1,6 +1,6 @@
 <section *ngIf="movie; else loading">
     <div class="header">
-        <img class="backdrop" src="{{imagePath(movie.backdrop_path)}}">
+        <img class="backdrop" src="{{movie.backdrop_path | imagePath}}">
         <div class="overlay">
             <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
             <mat-chip-list class="genres">
@@ -12,7 +12,7 @@
     
     <p>{{movie.overview}}</p>
     <p>Released: {{movie.release_date | date}}</p>
-    <p>Runtime: {{timeToHM(movie.runtime)}}</p>
+    <p>Runtime: {{movie.runtime | runtime}}</p>
 
     <app-credits [id]="movie.id" [mediaType]="mediaType" [season]="seasonSeq" [episode]="episodeSeq"></app-credits>
 
