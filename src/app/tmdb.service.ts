@@ -4,7 +4,6 @@ import { Observable } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 
 const BASE_URL = 'https://api.themoviedb.org/3/'
-const API_KEY = '66d4305f8d77fcd22bd67d5ed8ad39af'
 
 export type Url = string
 
@@ -199,11 +198,9 @@ export class TMDBService {
     searchResult: MultiSearchResult
 
     search(query: string, page = 1): Observable<MultiSearchResult> {
-        // api_key=${API_KEY}&
-        const params = { api_key: API_KEY }
-        this.searchText = query
 
-        return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?page=${page}&query=${query}`, { params }).pipe(
+        this.searchText = query
+        return this.http.get<MultiSearchResult>(`${BASE_URL}search/multi?page=${page}&query=${query}`).pipe(
             tap(response => {
                 this.searchResult = response
                 console.log(`[search]:`, response)
@@ -214,19 +211,19 @@ export class TMDBService {
     // MARK - Movie
 
     getMovie(id: number): Observable<MovieRecord> {
-        return this.http.get<MovieRecord>(`${BASE_URL}movie/${id}?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieRecord>(`${BASE_URL}movie/${id}`).pipe(
             tap(response => console.log(`[getMovie]:`, response))
         )
     }
 
     getMovieCredits(id: number): Observable<MovieCredits> {
-        return this.http.get<MovieCredits>(`${BASE_URL}movie/${id}/credits?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieCredits>(`${BASE_URL}movie/${id}/credits`).pipe(
             tap(response => console.log(`[getMovieCredits]:`, response))
         )
     }
 
     getPopularMovies(): Observable<MultiSearchResult> {
-        return this.http.get<MultiSearchResult>(`${BASE_URL}movie/popular?api_key=${API_KEY}&page=1`).pipe(
+        return this.http.get<MultiSearchResult>(`${BASE_URL}movie/popular?page=1`).pipe(
             tap(response => console.log(`[getPopularMovies]:`, response))
         )
     }
@@ -235,13 +232,13 @@ export class TMDBService {
     // MARK - Series
 
     getSeries(id: number): Observable<MovieRecord> {
-        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}`).pipe(
             tap(response => console.log(`[getSeries]:`, response))
         )
     }
 
     getSeriesCredits(id: number): Observable<MovieCredits> {
-        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/credits?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/credits`).pipe(
             tap(response => console.log(`[getSeriesCredits]:`, response))
         )
     }
@@ -249,13 +246,13 @@ export class TMDBService {
     // MARK - Season
 
     getSeason(id: number, season: number): Observable<MovieRecord> {
-        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}`).pipe(
             tap(response => console.log(`[getSeason]:`, response))
         )
     }
 
     getSeasonCredits(id: number, season: number): Observable<MovieCredits> {
-        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/credits?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/credits`).pipe(
             tap(response => console.log(`[getSeasonCredits]:`, response))
         )
     }
@@ -263,13 +260,13 @@ export class TMDBService {
     // MARK - Episode
 
     getEpisode(id: number, season: number, episode: number): Observable<MovieRecord> {
-        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}`).pipe(
             tap(response => console.log(`[getEpisode]:`, response))
         )
     }
 
     getEpisodeCredits(id: number, season: number, episode: number): Observable<MovieCredits> {
-        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}/credits?api_key=${API_KEY}`).pipe(
+        return this.http.get<MovieCredits>(`${BASE_URL}tv/${id}/season/${season}/episode/${episode}/credits`).pipe(
             tap(response => console.log(`[getEpisodeCredits]:`, response))
         )
     }
@@ -277,7 +274,7 @@ export class TMDBService {
     // MARK - Person
 
     getPerson(id: number): Observable<PersonRecord> {
-        return this.http.get<PersonRecord>(`${BASE_URL}person/${id}?api_key=${API_KEY}`).pipe(
+        return this.http.get<PersonRecord>(`${BASE_URL}person/${id}`).pipe(
             tap(response => console.log(`[getPerson]:`, response))
         )
     }
