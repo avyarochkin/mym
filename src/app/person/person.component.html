@@ -1,10 +1,12 @@
 <section *ngIf="person; else loading">
-    <a class="poster" href="//imdb.com/name/{{person.imdb_id}}" target="_new">
-        <img src="{{person.profile_path | imagePath}}" alt="poster">
-    </a>
-    <h1>{{person.name}}</h1>
-    <p>Born: {{person.birthday | date}}</p>
+    <div class="header" (click)= "expanded = !expanded" [class.expanded]="expanded">
+        <img class="backdrop" src="{{person.profile_path | imagePath}}" alt="poster">
+        <div class="overlay">
+            <h1>{{person.name}}</h1>
+        </div>
+    </div>
     <p>{{person.biography}}</p>
+    <app-credits [id]="person?.id" [mediaType]="'person'"></app-credits>
 </section>
 
 <ng-template #loading>
