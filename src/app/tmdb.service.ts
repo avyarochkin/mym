@@ -124,10 +124,24 @@ interface CastMember {
     name: string,
     gender?: number,
     character: string,
-    order: number,
+    order?: number,
     profile_path?: Url,
-    cast_id: number,
-    credit_id?: string
+    cast_id?: number,
+    credit_id?: string,
+    // movie credits
+    title?: string,
+    original_title?: string,
+    overview?: string,
+    release_date?: string,
+    vote_count?: number,
+    vote_average?: number,
+    genre_ids?: number[],
+    original_language?: string,
+    popularity?: number,
+    poster_path?: Url,
+    backdrop_path?: Url,
+    video?: boolean,
+    adult?: boolean
 }
 
 interface CrewMember {
@@ -276,6 +290,12 @@ export class TMDBService {
     getPerson(id: number): Observable<PersonRecord> {
         return this.http.get<PersonRecord>(`${BASE_URL}person/${id}`).pipe(
             tap(response => console.log(`[getPerson]:`, response))
+        )
+    }
+
+    getPersonCredits(id: number): Observable<MovieCredits> {
+        return this.http.get<MovieCredits>(`${BASE_URL}person/${id}/movie_credits`).pipe(
+            tap(response => console.log(`[getPersonCredits]:`, response))
         )
     }
 

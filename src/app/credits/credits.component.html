@@ -2,11 +2,21 @@
 <div class="view" *ngIf="credits">
     <div class="back" (click)="scrollBack()" [class.enabled]="canScrollBack()"><mat-icon>chevron_left</mat-icon></div>
     <div class="content" [style.marginLeft]="contentOffset+'px'">
-        <a *ngFor="let member of credits.cast" routerLink="/details/person/{{member.id}}">
-            <img src="{{member.profile_path | imagePath}}" alt="credit">
-            <strong>{{member.name}}</strong>
-            <em>{{member.character}}</em>
-        </a>
+        <ng-container *ngFor="let member of credits.cast" [ngSwitch]="member.name ? 'person' : 'movie'">
+
+            <a *ngSwitchCase="'person'" routerLink="/details/person/{{member.id}}">
+                <img src="{{member.profile_path | imagePath}}" alt="credit">
+                <strong>{{member.name}}</strong>
+                <em>{{member.character}}</em>
+            </a>
+
+            <a *ngSwitchCase="'movie'" routerLink="/details/movie/{{member.id}}">
+                <img src="{{member.poster_path | imagePath}}" alt="credit">
+                <strong>{{member.title}}</strong>
+                <em>{{member.character}}</em>
+            </a>
+
+        </ng-container>
     </div>
     <div class="forward" (click)="scrollForward()" [class.enabled]="canScrollForward()"><mat-icon>chevron_right</mat-icon></div>
 </div>

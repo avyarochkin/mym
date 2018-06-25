@@ -38,6 +38,8 @@ export class CreditsComponent implements OnChanges {
                     return this.mdb.getSeasonCredits(this.id, this.season)
                 case MEDIA_TYPE.EPISODE:
                     return this.mdb.getEpisodeCredits(this.id, this.season, this.episode)
+                case MEDIA_TYPE.PERSON:
+                    return this.mdb.getPersonCredits(this.id)
             }
         }
         getCredits().subscribe(credits => this.credits = credits)
