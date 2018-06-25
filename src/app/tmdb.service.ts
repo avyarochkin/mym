@@ -201,6 +201,19 @@ export interface PersonRecord {
     profile_path?: Url
 }
 
+interface ProfileImages {
+    profiles: MediaImage[]
+}
+
+export interface MediaImage {
+    file_path: Url,
+    width: number,
+    height: number,
+    aspect_ratio: number,
+    vote_average: number,
+    vote_count: number
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -294,8 +307,15 @@ export class TMDBService {
     }
 
     getPersonCredits(id: number): Observable<MovieCredits> {
-        return this.http.get<MovieCredits>(`${BASE_URL}person/${id}/movie_credits`).pipe(
+        return this.http.get<MovieCredits>(`${BASE_URL}person/${id}/combined_credits`).pipe(
             tap(response => console.log(`[getPersonCredits]:`, response))
+        )
+    }
+
+    getPersonImages(id: number): Observable<MediaImage[]> {
+        return this.http.get<ProfileImages>(`${BASE_URL}person/${id}/images`).pipe(
+            tap(response => console.log(`[getPersonImages]:`, response)),
+            map(response => response.profiles)
         )
     }
 
