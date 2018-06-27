@@ -30,12 +30,20 @@
             line-height: 11pt;
             dfn { font-style: normal }
         }
-        img {
+        img.poster {
             height: 150%;
             max-width: 88px;
             margin: 0 -16px 0 0;
             box-shadow: 0 0 20px grey;
             transform: rotate(10deg);
+        }
+        img.still {
+            height: 100%;
+            margin: 0 -16px 0 4px;
+            padding: 0 3px;
+            background-color: black;
+            border: dotted white;
+            border-width: 0 5px;
         }
         em {
             background-color: #666;

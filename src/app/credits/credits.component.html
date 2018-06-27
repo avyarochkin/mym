@@ -5,13 +5,13 @@
         <ng-container *ngFor="let member of credits.cast" [ngSwitch]="member.name ? 'person' : 'movie'">
 
             <a *ngSwitchCase="'person'" routerLink="/details/person/{{member.id}}">
-                <img src="{{member.profile_path | imagePath}}" alt="credit">
+                <img src="{{member.profile_path | imagePath:'w342'}}" alt="credit">
                 <strong>{{member.name}}</strong>
                 <em>{{member.character}}</em>
             </a>
 
             <a *ngSwitchCase="'movie'" routerLink="/details/movie/{{member.id}}">
-                <img src="{{member.poster_path | imagePath}}" alt="credit">
+                <img src="{{member.poster_path | imagePath:'w342'}}" alt="credit">
                 <strong>{{member.title}}</strong>
                 <em>{{member.character}}</em>
             </a>

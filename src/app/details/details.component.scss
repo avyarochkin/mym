@@ -8,10 +8,15 @@ section {
         height: 56vw;
         overflow: hidden;
         background-image: repeating-linear-gradient(-80deg,#333,#555 15%);
+        box-shadow: 0 0 20px #999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         .backdrop {
             width: 100%;
             // opacity: .2;
-            z-index: -1;
+            z-index: 0;
         }
         .overlay {
             position: absolute;

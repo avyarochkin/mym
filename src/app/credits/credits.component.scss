@@ -1,3 +1,5 @@
+@import "../../declarations.scss";
+
 :host {
     display: block;
     clear: both;
@@ -8,6 +10,8 @@
 div.view {
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 20px #999;
+    @media screen and (max-width: $mobile-large) { overflow-x: scroll }
     > .back, > .forward {
         position: absolute;
         background-color: grey;
@@ -26,6 +30,7 @@ div.view {
             display: flex;
             color: white;
             cursor: pointer;
+            @media screen and (max-width: $mobile-large) { display: none }
         }
         &:hover {
             opacity: 1;
@@ -41,6 +46,7 @@ div.view {
         padding: 0;
         white-space: nowrap;
         transition: margin .5s;
+        padding-bottom: .5em;
         a {
             display: inline-block;
             width: 125px;
@@ -50,9 +56,12 @@ div.view {
             padding: 0;
             img {
                 display: block;
-                width: 125px;
+                min-width: 125px;
+                height: 187.5px;
                 transition: transform .25s;
-                &:hover { transform: scale(1.05) }
+                @media screen and (min-width: $mobile-large) {
+                    &:hover { transform: scale(1.05) }
+                }
             }
             strong, em {
                 display: block;

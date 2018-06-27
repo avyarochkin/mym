@@ -9,6 +9,7 @@ import { MediaRecord } from '../tmdb.service'
 export class RecordsComponent {
 
     @Input() records: MediaRecord[]
+    @Input() parentId: number
 
     constructor() { }
 
