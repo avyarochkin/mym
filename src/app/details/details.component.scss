@@ -5,6 +5,9 @@
 section {
     .header {
         position: relative;
+        height: 56vw;
+        overflow: hidden;
+        background-image: repeating-linear-gradient(-80deg,#333,#555 15%);
         .backdrop {
             width: 100%;
             // opacity: .2;

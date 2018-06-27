@@ -38,6 +38,12 @@ export interface MediaRecord {
     original_name?: string,
     first_air_date?: string,
     origin_country?: string[],
+    // season attributes
+    season_number?: number,
+    air_date?: string,
+    episode_count?: number,
+    // episode attributes
+    episode_number?: number,
     // person attributes
     profile_path?: Url,
     known_for?: MediaRecord[]
@@ -260,6 +266,12 @@ export class TMDBService {
 
     getSeries(id: number): Observable<MovieRecord> {
         return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}`).pipe(
+            map(response => {
+                if (response && response.seasons) {
+                    response.seasons = response.seasons.map(season => Object.assign(season, {media_type: 'season'}))
+                }
+                return response
+            }),
             tap(response => console.log(`[getSeries]:`, response))
         )
     }
@@ -274,6 +286,12 @@ export class TMDBService {
 
     getSeason(id: number, season: number): Observable<MovieRecord> {
         return this.http.get<MovieRecord>(`${BASE_URL}tv/${id}/season/${season}`).pipe(
+            map(response => {
+                if (response && response.episodes) {
+                    response.episodes = response.episodes.map(episode => Object.assign(episode, {media_type: 'episode'}))
+                }
+                return response
+            }),
             tap(response => console.log(`[getSeason]:`, response))
         )
     }

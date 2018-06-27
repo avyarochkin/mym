@@ -14,7 +14,25 @@
                 <span matLine></span>
                 <img src="{{record.poster_path | imagePath}}" alt="poster">
             </mat-list-item>
-            
+
+            <mat-list-item *ngSwitchCase="'season'" routerLink="/details/season/{{record.id}}/{{record.season_number}}">
+                <mat-icon matListIcon>subscriptions</mat-icon>
+                <a matLine>{{record.name}}</a>
+                <span matLine>
+                    {{record.air_date | date:'yyyy'}}: {{record.episode_count}} episodes
+                </span>
+                <img src="{{record.poster_path | imagePath}}" alt="poster">
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'episode'" routerLink="/details/episode/{{record.id}}/{{record.season_number}}/{{record.episode_number}}">
+                <mat-icon matListIcon>local_movies</mat-icon>
+                <a matLine>{{record.name}}</a>
+                <span matLine>
+                    {{record.air_date | date:'yyyy'}}
+                </span>
+                <img src="{{record.poster_path | imagePath}}" alt="poster">
+            </mat-list-item>
+
             <mat-list-item *ngSwitchCase="'person'" routerLink="/details/person/{{record.id}}">
                 <mat-icon matListIcon>person</mat-icon>
                 <a matLine>{{record.name}}</a>
