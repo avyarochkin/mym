@@ -17,7 +17,7 @@ export class ImagePathPipe implements PipeTransform {
     transform(value: string, size = 'original', wrapper?: string): string {
         let path = (value)
             ? `http://image.tmdb.org/t/p/${size}${value}`
-            : '/assets/images/poster.jpg'
+            : '/assets/images/poster.png'
         if (wrapper) { path = `${wrapper}('${path}')` }
         return path
     }
