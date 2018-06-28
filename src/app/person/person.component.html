@@ -1,11 +1,11 @@
 <section *ngIf="person; else loading">
     <div class="header" (click)= "expanded = !expanded" [class.expanded]="expanded">
-        <img class="backdrop" src="{{person.profile_path | imagePath}}" alt="poster">
+        <img #profile class="backdrop" src="{{person.profile_path | imagePath}}" alt="poster" (load)="profileLoaded = true" [class.loaded]="profileLoaded">
         <div class="overlay">
             <h1>{{person.name}}</h1>
         </div>
     </div>
-    <p>{{person.biography}}</p>
+    <p [class.clamp]="!clamped" (click)="clamped = !clamped">{{person.biography}}</p>
     <app-credits [id]="person?.id" [mediaType]="'person'"></app-credits>
 </section>
 
