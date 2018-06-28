@@ -10,6 +10,8 @@ export class SearchComponent {
 
     @ViewChild('searchInput') searchInput: ElementRef
 
+    emptyIndex = Math.trunc(Math.random() * 30) + 1
+
     get searchText(): string {
         return this.mdb.searchText
     }

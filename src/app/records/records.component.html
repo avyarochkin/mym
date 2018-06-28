@@ -1,4 +1,4 @@
-<section *ngIf="records; else empty" class="mat-typography">
+<section *ngIf="records" class="mat-typography">
     <mat-nav-list>
         <mat-divider></mat-divider>
         <ng-container *ngFor="let record of records" [ngSwitch]="record.media_type">
@@ -51,7 +51,3 @@
         </ng-container>
     </mat-nav-list>    
 </section>
-
-<ng-template #empty>
-    <img class="empty" src="/assets/images/empty-search.png">
-</ng-template>
