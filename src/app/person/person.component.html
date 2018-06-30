@@ -5,7 +5,9 @@
             <h1>{{person.name}}</h1>
         </div>
     </div>
+
     <p [class.clamp]="!clamped" (click)="clamped = !clamped">{{person.biography}}</p>
+    <h3>Known For</h3>
     <app-credits [id]="person?.id" [mediaType]="'person'"></app-credits>
 </section>
 

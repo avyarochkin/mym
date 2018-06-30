@@ -28,7 +28,9 @@
             max-width: 88px;
             margin: 0 -16px 0 0;
             box-shadow: 0 0 20px grey;
-            transform: rotate(10deg);
+            transform: rotate(0deg) translateX(104px);
+            transition: transform .5s;
+            &.loaded { transform: rotate(10deg) translateX(0) }
         }
         img.still {
             height: 100%;

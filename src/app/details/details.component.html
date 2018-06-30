@@ -1,6 +1,9 @@
 <section *ngIf="movie; else loading">
     <div class="header">
-        <img class="backdrop" src="{{(movie.backdrop_path ? movie.backdrop_path : movie.poster_path ? movie.poster_path : movie.still_path) | imagePath}}">
+        <img class="backdrop"
+            src="{{(movie.backdrop_path ? movie.backdrop_path : movie.poster_path ? movie.poster_path : movie.still_path) | imagePath}}"
+            (load)="backdropLoaded = true"
+            [class.loaded]="backdropLoaded">
         <div class="overlay">
             <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
             <mat-chip-list class="genres">
@@ -14,6 +17,7 @@
     <p *ngIf="movie.release_date">Released: {{movie.release_date | date}}</p>
     <p *ngIf="movie.runtime">Runtime: {{movie.runtime | runtime}}</p>
 
+    <h3>Cast</h3>
     <app-credits [id]="parentId ? parentId : movie.id" [mediaType]="mediaType" [season]="seasonSeq" [episode]="episodeSeq"></app-credits>
 
     <div *ngIf="movie.seasons">
