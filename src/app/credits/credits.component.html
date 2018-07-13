@@ -1,4 +1,4 @@
-<div class="view" *ngIf="credits">
+<div class="view" *ngIf="credits?.cast?.length; else noRecord">
     <div class="back" (click)="scrollBack()" [class.enabled]="canScrollBack()"><mat-icon>chevron_left</mat-icon></div>
     <div class="content" [style.marginLeft]="contentOffset+'px'">
         <ng-container *ngFor="let member of credits.cast" [ngSwitch]="member.name ? 'person' : 'movie'">
@@ -12,6 +12,7 @@
             <a *ngSwitchCase="'movie'" routerLink="/details/movie/{{member.id}}">
                 <img src="{{member.poster_path | imagePath:'w342'}}" alt="credit">
                 <strong>{{member.title}}</strong>
+                <sup>{{member.release_date | date:'yyyy'}}</sup>
                 <em>{{member.character}}</em>
             </a>
 
@@ -19,3 +20,6 @@
     </div>
     <div class="forward" (click)="scrollForward()" [class.enabled]="canScrollForward()"><mat-icon>chevron_right</mat-icon></div>
 </div>
+<ng-template #noRecord>
+    <p>No record found.</p>
+</ng-template>

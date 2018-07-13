@@ -3,15 +3,22 @@
 :host {
     display: block;
     clear: both;
-    h3 {
+    h3, p {
         margin: 1em 5%;
+    }
+    p { 
+        margin: 0 5% 1em;
+        font-size: .8em;
     }
 }
 div.view {
     position: relative;
     overflow: hidden;
     box-shadow: 0 0 20px #999;
-    @media screen and (max-width: $mobile-large) { overflow-x: scroll }
+    @media screen and (max-width: $mobile-large) { 
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
     > .back, > .forward {
         position: absolute;
         background-color: grey;
@@ -69,6 +76,10 @@ div.view {
                 white-space: normal;
                 margin: .25em .25em 0;
                 font-style: normal;
+            }
+            sup {
+                font-size: .6em;
+                + em { margin-top: 0 }
             }
         }
     }
