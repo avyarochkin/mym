@@ -15,8 +15,7 @@ section {
         transition: height .5s .1s, transform .3s;
         &.expanded {
             height: 95vh;
-            transform: scale(1.05);
-            transition: height .5s, transform .3s .2s;
+            transition: height .5s;
             box-shadow: 0 5px 10px grey;
         }
         .backdrop {
@@ -55,7 +54,7 @@ section {
                 left: 0;
                 width: 100%;
                 height: 3.9em;
-                background: linear-gradient(to bottom, transparent, white);
+                background: linear-gradient(rgba(250,250,250,0), #fafafa);
             }
         }
     }
