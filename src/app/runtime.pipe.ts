@@ -15,7 +15,8 @@ export class RuntimePipe implements PipeTransform {
     transform(minutes: number): string {
         const hr = Math.trunc(minutes / 60)
         const m = minutes - hr * 60
-        return (hr > 0 ? `${hr} hr ` : '') + (m > 0 ? `${m} min` : '')
+        return (hr > 0 ? `${hr}h ` : '') + (m > 0 ? `${m}m` : '')
+        // return `${hr}:${m}`
     }
 
 }

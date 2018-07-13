@@ -1,4 +1,17 @@
 <section *ngIf="movie; else loading">
+    <mat-toolbar compact color="accent">
+        <button mat-button 
+            *ngFor="let genre of movie.genres" 
+            routerLink="/genre/{{genre.id}}">
+            {{genre.name}}
+        </button>
+        <a mat-button class="spacer" disabled>{{movie.runtime | runtime}}</a>
+        <button mat-button class="solid" *ngIf="movie.vote_average">
+            <mat-icon>star</mat-icon>
+            {{movie.vote_average | number:'1.1-1'}}
+        </button>
+    </mat-toolbar>
+
     <div class="header">
         <img class="backdrop"
             src="{{(movie.backdrop_path ? movie.backdrop_path : movie.poster_path ? movie.poster_path : movie.still_path) | imagePath}}"
@@ -6,16 +19,11 @@
             [class.loaded]="backdropLoaded">
         <div class="overlay">
             <h1>{{movie.name}} <mat-icon *ngIf="movie.adult">explicit</mat-icon></h1>
-            <mat-chip-list class="genres">
-                <mat-chip *ngFor="let genre of movie.genres" routerLink="/genre/{{genre.id}}">{{genre.name}}</mat-chip>
-                <mat-chip color="primary" selected="true" *ngIf="movie.vote_average">{{movie.vote_average | number:'1.1-1'}}</mat-chip>
-            </mat-chip-list>
+            <p *ngIf="movie.release_date">{{movie.release_date | date:'yyyy'}}</p>
         </div>
     </div>
     
     <p>{{movie.overview}}</p>
-    <p *ngIf="movie.release_date">Released: {{movie.release_date | date}}</p>
-    <p *ngIf="movie.runtime">Runtime: {{movie.runtime | runtime}}</p>
 
     <h3>Cast</h3>
     <app-credits [id]="parentId ? parentId : movie.id" [mediaType]="mediaType" [season]="seasonSeq" [episode]="episodeSeq"></app-credits>

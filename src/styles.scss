@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "./declarations.scss";
 
 body { 
@@ -24,4 +24,33 @@ h4 {
 }
 form + h4 {
     margin-top: -1.3em;
+}
+.mat-toolbar[compact] {
+    height: initial;
+    padding: 0;
+    .mat-button {
+        line-height: 28px;
+        min-width: 20px;
+        padding: 0 6px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: .25px;
+        border-right: 1px solid #fff7;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &.spacer { 
+            flex: 1 0 auto;
+            padding: 0 4px;
+        }
+        &.solid {
+            flex: 0 0 auto;
+        }
+        .mat-icon {
+            font-size: 16px;
+            line-height: 16px;
+            width: 18px;
+            height: 18px;
+            margin-left: -2px;
+        }
+    }
 }
